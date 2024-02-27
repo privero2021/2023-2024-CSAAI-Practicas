@@ -9,7 +9,7 @@
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
 .columna {
 float: left;
-padding: 10px;
+padding: 20px;
 min-height: 500px;
 }
 
