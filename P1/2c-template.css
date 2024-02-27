@@ -4,7 +4,8 @@
 * {
     box-sizing: border-box;
   }
-  
+
+
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
 .columna {
 float: left;
@@ -20,6 +21,7 @@ width: 25%;
 width: 75%;
 }
 
+
 /* Clear floats despues de las columnas para eliminar la superposición */
 .filla:after {
 content: "";
@@ -28,15 +30,24 @@ clear: both;
 }
 
 #c1 {
-    background-color:#aaa;
+    background-color: rgba(51, 250, 2, 0.5); /* Fondo superior con transparencia */
 }
 
 #c2 {
-    background-color:#bbb;
+    background-color: rgba(6, 206, 23, 0.5); /* Fondo superior con transparencia */
+}
+
+#name {
+    text-align: center;
+    padding: 10px;
 }
 
 #imgmike {
-
+  padding: 20px;
+  border: solid;
+  border-radius: 10px;
+  border-color: #1f3fce;
+  background-color: #7a90b9;
 }
 
 /* estilos para imágenes https://www.w3schools.com/css/css3_images.asp */
@@ -48,11 +59,16 @@ img {
     margin: 10px;
 }
 
+body {
+    background-image: url(fondo3.png);
+}
+
 .iresponsive {
     padding: 0 6px;
     float: left;
     width: 100%;
   }
+
 
 /* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas. */
 /* Así conseguimos que el contenido se vea bien en dispositvos móviles */
