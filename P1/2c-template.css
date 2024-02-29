@@ -17,6 +17,7 @@
 /*------------------------------------GENERALES---------------------------------------------*/
 body {
   background-image: url(fondo3.png);
+  background-size: cover;
   margin: 25px;
 }
 
@@ -24,42 +25,61 @@ body {
 /*-------------------------------------CLASES-----------------------------------------------*/
 /* Crear columnas de ancho diferente que se colocan una a continuación de la otra */
 .columna {
-float: left;
-padding: 30px;
-min-height: 500px;
-border: solid;
-border-color: #00ff15;
+  float: left;
+  padding: 30px;
+  min-height: 500px;
+  border: solid;
+  border-color: #00ff15;
 }
 
 .izquierda {
-width: 30%;
+  width: 30%;
 }
 
 .derecha {
-width: 70%;
+  width: 70%;
 }
 
 /* Clear floats despues de las columnas para eliminar la superposición */
 .filla:after {
-content: "";
-display: table;
-clear: both;
+  content: "";
+  display: table;
+  clear: both;
 }
 
 
 .titulos {
-font-family: "MonsterAG", sans-serif; /* sans-serif como fuente alternativa si no funciona la primera */
-font-size: 40px;
-border: solid;
-border-radius: 10%;
-border-color: rgba(0, 0, 0, 0.356);
-background-color: rgb(179, 238, 184, 0.4);
+  font-family: "MonsterAG", sans-serif; /* sans-serif como fuente alternativa si no funciona la primera */
+  font-size: 40px;
+  border: solid;
+  border-radius: 10%;
+  border-color: rgba(0, 0, 0, 0.699);
+  background-color: rgb(179, 238, 184, 0.4);
 }
 
 .subtitulos {
-font-weight: bold;
+  font-weight: bold;
 }
 
+/* Para las listas */
+.icon-lista {
+  list-style-type: none; /* Quita los puntos predeterminados de la lista */
+}
+
+.icon-lista li {
+  padding-left: 0px; /* Espacio para el icono */
+}
+
+.icon-lista li img {
+  width: 20px; /* Tamaño del icono */
+  vertical-align: middle; /* Alineación vertical */
+  margin-right: 10px; /* Espacio entre el icono y el texto */
+}
+
+/* .icons {
+  width: 30px;
+  margin: 5px;
+} */
 
 /*---------------------------------IDENTIFICADORES------------------------------------------*/
 #c1 {
@@ -88,13 +108,51 @@ font-weight: bold;
 
 
 /*--------------------------------ABOUT.HTML---------------------------------------------*/
+#c3 {
+  background-color: rgba(6, 206, 23, 0.5);
+}
+
 .izquierda2 {
-width: 45%;
+  width: 45%;
+  margin: 5px;
+  background-color: rgba(148, 112, 247, 0.507);
   }
 
 .derecha2 {
-width: 55%;
+  width: 50%;
+  margin: 5px;
+  background-color: rgba(148, 112, 247, 0.507);
   }
+
+.titulos2 {
+  font-family: "MonsterAG", sans-serif;
+  font-size: 40px;
+  border: solid;
+  border-radius: 10%;
+  border-color: rgba(0, 0, 0, 0.699);
+  background-color: rgb(179, 238, 184, 0.4);
+  text-align: center;
+}
+
+.texto-con-gif {
+  position: relative; /* Establece la posición relativa para que el gif se pueda posicionar correctamente */
+}
+
+.gif {
+  display: inline-block; /*Hace que un elemento se comporte como una combinación de un elemento de bloque y un elemento en línea.*/
+  width: 90px;
+  height: 90px;
+  background-image: url('mini-mike2.gif');
+  background-size: cover; /* Ajusta el tamaño del gif */
+  margin: 0 5px; /* Opcional: ajusta el margen alrededor del gif */
+  vertical-align: middle; /* Alinea verticalmente el gif con el texto */
+}
+
+#about-Html {
+    font-weight: bold;
+    font-family: "MonsterAG";
+    font-size: 30px;
+}
 
 
 
