@@ -30,7 +30,7 @@ body {
   min-height: 500px;
   border: solid;
   border-color: #00ff15;
-  font-family: Calibri;
+  font-family: calibri;
   font-size: 20px;
 }
 
@@ -88,6 +88,13 @@ body {
   vertical-align: middle;
 }
 
+#videos {
+  text-align: center;
+  margin: 10px;
+  font-family: "MonsterAG";
+  font-size: 20px;
+}
+
 /*---------------------------------IDENTIFICADORES------------------------------------------*/
 #c1 {
     background-color: rgba(51, 255, 0, 0.5); /* Fondo superior con transparencia */
@@ -129,6 +136,12 @@ body {
   width: 50%;
   margin: 5px;
   background-color: rgba(148, 112, 247, 0.507);
+  }
+
+  .central {
+    width: 96%;
+    margin: 5px;
+    background-color: rgba(148, 112, 247, 0.507);
   }
 
 .titulos2 {
