@@ -103,7 +103,7 @@ body {
 
 #history {
     width: 100%;
-    height: 0%;
+    height: auto;
     text-align: center;
     font-size: xx-large;
     font-family: monospace;
@@ -170,7 +170,6 @@ body {
 
 .key-number {
     width: 25%;
-    height: auto;
     float: left;
     color: red;
     background-color: black;
@@ -196,4 +195,18 @@ body {
 .numbers:hover {
     color: red;
     font-size: medium;
+}
+
+
+/* Responsive layout - cuando el ancho de pantalla es menor a 600px, muestra las columnas apiladas.
+/* Así conseguimos que el contenido se vea bien en dispositvos móviles */
+
+@media screen and (max-width: 600px) {
+    .columna {
+      width: 100%;
+    }
+
+    .iresponsive {
+      width: 100%;
+    }
 }
