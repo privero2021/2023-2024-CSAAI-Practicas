@@ -47,8 +47,17 @@ for (let j = 0; j < clave.length; j++) {
 }
 
 
-//---- Cambiar * cuando sea número de la clave ----
+//-- Para verificar si se han descubierto todos los números
+let todosDescubiertos = false;
 
+function checkTodosDescubiertos() {
+    if (gui.a.textContent != "*" && gui.b.textContent != "*" && gui.c.textContent != "*" && gui.d.textContent != "*") {
+        todosDescubiertos = true;
+    }
+}
+
+
+//---- Cambiar * cuando sea número de la clave ----
 //-- Botón 0
 gui.cero.onclick = () => {
     crono.start();
@@ -61,20 +70,28 @@ gui.cero.onclick = () => {
                 case 0: //-- Actúan como un if (clave[0] === "0") por separado
                     gui.a.textContent = 0;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 0;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 0;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 0;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -89,20 +106,28 @@ gui.uno.onclick = () => {
                 case 0:
                     gui.a.textContent = 1;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 1;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 1;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 1;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -117,20 +142,28 @@ gui.dos.onclick = () => {
                 case 0:
                     gui.a.textContent = 2;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 2;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 2;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 2;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -145,20 +178,28 @@ gui.tres.onclick = () => {
                 case 0:
                     gui.a.textContent = 3;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 3;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 3;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 3;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -173,20 +214,28 @@ gui.cuatro.onclick = () => {
                 case 0:
                     gui.a.textContent = 4;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 4;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 4;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 4;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -201,20 +250,28 @@ gui.cinco.onclick = () => {
                 case 0:
                     gui.a.textContent = 5;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 5;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 5;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 5;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -229,20 +286,28 @@ gui.seis.onclick = () => {
                 case 0:
                     gui.a.textContent = 6;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 6;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 6;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 6;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -257,20 +322,28 @@ gui.siete.onclick = () => {
                 case 0:
                     gui.a.textContent = 7;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 7;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 7;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 7;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -285,20 +358,28 @@ gui.ocho.onclick = () => {
                 case 0:
                     gui.a.textContent = 8;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 8;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 8;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 8;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -313,20 +394,28 @@ gui.nueve.onclick = () => {
                 case 0:
                     gui.a.textContent = 9;
                     gui.a.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 1:
                     gui.b.textContent = 9;
                     gui.b.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 2:
                     gui.c.textContent = 9;
                     gui.c.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
                 case 3:
                     gui.d.textContent = 9;
                     gui.d.style.color = "pink";
+                    checkTodosDescubiertos();
                     break;
             }
+        }
+        if (todosDescubiertos) {
+            console.log("¡Números descubiertos!");
+            crono.stop();
         }
     }
 }
@@ -353,4 +442,37 @@ gui.stop.onclick = () => {
 gui.reset.onclick = () => {
     console.log("Reset!");
     crono.reset();
+    todosDescubiertos = false;
+
+    //-- Reiniciar el cronómetro
+    crono.reset();
+
+    //-- Limpiar el contenido de los elementos de la gui
+    gui.a.textContent = "*";
+    gui.a.style.color = "red";
+    gui.b.textContent = "*";
+    gui.b.style.color = "red";
+    gui.c.textContent = "*";
+    gui.c.style.color = "red";
+    gui.d.textContent = "*";
+    gui.d.style.color = "red";
+    
+    //-- Limpiar el array "clave"
+    clave.length = 0;
+
+    //-- Generamos nuevos números aleatorios y los almacenamos en el array "clave"
+    for (let i=0; i < 4; ++i) {
+        let rnum;
+        do {
+            rnum = getRandomInt(10).toString();
+        } while (clave.includes(rnum));
+
+        clave.push(rnum); //-- Agregar el único número array 
+    }
+
+    //-- Mostrar nueva clave sercreta en la consola
+    console.log(clave);
+
+    //-- Detener el cronómetro
+    crono.stop();
 }
