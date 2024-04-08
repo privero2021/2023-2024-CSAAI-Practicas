@@ -19,11 +19,12 @@ const ball = {
 };
 
 function draw() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
+  ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpia cada frame para eliminar los cículos
+                                                    // antiguos y muestra los cuadros nuevos
   ball.draw();
   ball.x += ball.vx;
   ball.y += ball.vy;
-  raf = window.requestAnimationFrame(draw);
+  raf = window.requestAnimationFrame(draw); // Nos ayuda a generar la animación
 }
 
 canvas.addEventListener("mouseover", (e) => {
