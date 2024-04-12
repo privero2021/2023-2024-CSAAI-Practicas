@@ -9,19 +9,27 @@
     <link rel="stylesheet" href="tiro-parabolico.css">
 
     <!-- Código javascript -->
+    <script src = "crono.js" defer></script>
     <script src="tiro-parabolico.js" defer></script>
 </head>
 <body>
-    <h1>Tiro parabólico</h1>
-    <canvas id="canvas" width="900" height="400"></canvas>
+    <div class="columna">
+      <div class="iresponsive">
+        <h1>Tiro parabólico</h1>
+        <canvas id="canvas" width="900" height="400"></canvas>
     
-    <p>Ángulo de disparo:</p>
-    <p><input type="range" id="angle"> <div id="angle_disp"></div></p>
+        <p>Timer</p>
+        <p id = "display">0:0:0</p>
 
-    <p>Velocidad de disparo:</p>
-    <p><input type="range" id="veloc"> <div id="veloc_disp"></div></p>
+        <p>Ángulo de disparo:</p>
+        <p><input type="range" id="angle"> <div id="angle_disp"></div></p>
 
-    <input type="button" id="btnLanzar" value="Lanzar">
-    <input type="button" id="btnIniciar" value="Iniciar">
+        <p>Velocidad de disparo:</p>
+        <p><input type="range" id="veloc"> <div id="veloc_disp"></div></p>
+
+        <input type="button" id="btnLanzar" value="Lanzar">
+        <input type="button" id="btnIniciar" value="Iniciar">
+      </div>
+    </div>
 </body>
 </html>

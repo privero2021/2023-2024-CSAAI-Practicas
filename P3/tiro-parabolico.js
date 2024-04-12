@@ -21,7 +21,11 @@ const angulo_disp = document.getElementById("angle_disp");
 const velocidad = document.getElementById("veloc");
 const velocidad_disp = document.getElementById("veloc_disp");
 
+//-- Acceder al display del cronómetro
+const display = document.getElementById("display");
 
+//-- Definir un objeto cronómetro
+const crono = new Crono(display);
 
 //-- Coordenadas iniciales del proyectil
 let xop = 5;
@@ -36,19 +40,29 @@ let xo = 500; //getRandomXO(xomin,xomax);
 let yo = 370;
 
 
-
-//-- Dibujar el objetivo
-dibujarO(xo,yo); // Pintar el objetivo
-
 //-- Dibujar el proyectil
 dibujarP(xop, yop, 50, 50, "green"); //-- Pintar el proyectil
 
 
-
 //-- Velocidad del proyectil
-let velpx = 5;
+let velpx = 1;
 let velpy = 1;
 
+
+//-- Aceleración debida a la gravedad
+const g = 0.1; //-- Modificar según sea necesario
+
+//-- Tiempo inicial
+let t = 0;
+
+
+//-- Función para generar coordenadas aleatorias para el objetivo
+function generarCoordenadasAleatorias() {
+  xo = Math.floor(Math.random() * (xomax - xomin + 1)) + xomin;
+  yo = Math.floor(Math.random() * (canvas.height - 50 - 25 + 1)) + 25;
+
+  dibujarO(xo, yo); //-- Pintar el objetivo
+}
 
 
 //-- Función principal de actualización
@@ -59,25 +73,37 @@ function lanzar()
   //-- 1) Actualizar posición de los elementos
   
   //-- Condición de rebote en extremos verticales del canvas
-  if (xp < 0 || xp >= (canvas.width - 50) ) {
-  bound_sound();
-  velpx = -velpx;
+  if (xp < 0 || xp >= (canvas.width - 50)) {
+    bound_sound();
+    velpx = -velpx;
 }
 
   //-- Condición de rebote en extremos horizontales del canvas
   if (yp <= 0 || yp > (canvas.height - 50)) {
-      bound_sound();
-      velpy = -velpy;
+    bound_sound();
+    velpy = -velpy;
 }
 
-  //-- Actualizar la posición
-  xp = xp + velpx;
-  yp = yp + velpy;
+  //-- Actualizar la posición del proyectil (en función del tiempo)
+  xp = xop + velpx * t;
+  yp = yop - (velpy * t - 0.5 * g * (t**2));
 
-  //-- Colisión¿¿¿¿????
-  if (xp - xo < 10 ) {
-    dibujarP(xp, yp, 50, 50, "yellow"); // Pintar el proyectil
-} 
+  //-- Incrementar el tiempo para el próximo cuadro
+  t += 1;
+
+
+  //-- Comprobar si el proyectil está dentro de los límites del canvas
+  if (xp < 0 || xp >= canvas.width || yp < 0 || yp >= canvas.height) {
+    crono.stop();
+    return; // Detener la animación si el proyectil sale del canvas sin alcanzar al objetivo
+  }
+  
+  //-- Comprobar colisión
+  if (xp >= xo && xp <= xo + 50 && yp >= yo && yp <= yo + 50) {
+    dibujarP(xp, yp, 50, 50, "yellow"); //-- Pintar el proyectil
+    crono.stop();
+    return; //-- Si el proyectil colisiona con el objetivo, detener animación
+  }
 
   //-- 2) Borrar el canvas
   ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -91,13 +117,10 @@ function lanzar()
 }
 
 
-
 function bound_sound() {
-
   rebote_sound.currentTime = 0;
   rebote_sound.play();
 }
-
 
 
 //-- Función para pintar el proyectil
@@ -120,7 +143,6 @@ function dibujarP(x, y, lx, ly, color) {
 
   ctx.closePath();
 }
-
 
 
 //-- Función para pintar el objetivo
@@ -148,11 +170,17 @@ function dibujarO(x,y) {
 
 //-- Función de retrollamada del botón de disparo
 btnLanzar.onclick = () => {
+  console.log("Lanzando!!!");
+  crono.start();
   lanzar();
 }
 
+
 //-- Función de retrollamada del botón iniciar
 btnIniciar.onclick = () => {
+  console.log("Quieto parao!!!");
+  crono.stop();
+  
   //-- Reinicio
   location.reload();
 
@@ -161,23 +189,27 @@ btnIniciar.onclick = () => {
 }
 
 
-
-// Función para generar un número aleatorio entre un rango para posicionar el objetivo aleatoriamente
-
-
-
-//-- Mostrar valores de la aceleración
+//-- Evento input del deslizador de ángulo
 angulo.oninput = () => {
     angulo_disp.innerHTML = angulo.value;
+
+    //-- Convertir el valor del deslizador a radianes y actualizar el ángulo de disparo
+    angle = angulo.value * Math.PI / 180;
 }
 
-//-- Mostrar valores de la velocidad
+//-- Evento input del deslizador de velocidad
 velocidad.oninput = () => {
     velocidad_disp.innerHTML = velocidad.value;
+
+    //-- Actualizar la velocidad del proyectil
+    velpx = parseInt(velocidad.value) * Math.cos(angle); //-- Actualiza la velocidad en el eje x
+    velpy = -parseInt(velocidad.value) * Math.sin(angle); //-- Actualiza la velocidad en el eje y
+          //-- Signo negativo necesario para simular el efecto de la gravedad
 }
 
 
-
+//-- Llamar a la función para generar coordenadas aleatorias al cargar la página
+generarCoordenadasAleatorias();
 
 
 
