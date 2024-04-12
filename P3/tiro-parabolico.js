@@ -95,6 +95,7 @@ function lanzar()
   //-- Comprobar si el proyectil está dentro de los límites del canvas
   if (xp < 0 || xp >= canvas.width || yp < 0 || yp >= canvas.height) {
     crono.stop();
+    console.log("Fallaste! Inténtelo de nuevo");
     return; // Detener la animación si el proyectil sale del canvas sin alcanzar al objetivo
   }
   
@@ -102,6 +103,7 @@ function lanzar()
   if (xp >= xo && xp <= xo + 50 && yp >= yo && yp <= yo + 50) {
     dibujarP(xp, yp, 50, 50, "yellow"); //-- Pintar el proyectil
     crono.stop();
+    console.log("Ganaste!!! Pulse iniciar para nueva partida");
     return; //-- Si el proyectil colisiona con el objetivo, detener animación
   }
 
