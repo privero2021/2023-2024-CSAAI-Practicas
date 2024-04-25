@@ -35,7 +35,7 @@ const generateGame = () => {
     }
 
     //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-    const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'noviacadaver.png', 'noviacadaver.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
+    const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
 
     const picks = pickRandom(img, (dimensions * dimensions) / 2) 
 
@@ -78,7 +78,7 @@ const generateGame = () => {
         }
     
         //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-        const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'noviacadaver.png', 'noviacadaver.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
+        const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
     
         const picks = pickRandom(img, (dimensions * dimensions) / 2) 
     
@@ -121,7 +121,7 @@ const generateGame = () => {
     }
 
     //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-    const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'noviacadaver.png', 'noviacadaver.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
+    const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
     const picks = pickRandom(img, (dimensions * dimensions) / 2) 
 
     //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
