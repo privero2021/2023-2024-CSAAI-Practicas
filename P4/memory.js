@@ -23,8 +23,11 @@ const gui = {
 }
 
 const generateGame = () => {
-    const dimensions = selectors.tablero.getAttribute('grid-dimension')
 
+    gui.dim2.addEventListener('click', () => {
+    
+    const dimensions = 2
+    
     //-- Nos aseguramos de que el número de dimensiones es par
     // y si es impar lanzamos un error
     if (dimensions % 2 !== 0) {
@@ -32,12 +35,8 @@ const generateGame = () => {
     }
 
     //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-    const img = ['logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png']
+    const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'noviacadaver.png', 'noviacadaver.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
 
-    //-- Elegimos un subconjunto de emojis al azar, así cada vez que comienza el juego
-    // es diferente.
-    // Es decir, si tenemos un array con 10 emojis, vamos a elegir el cuadrado de las
-    // dimensiones entre dos, para asegurarnos de que cubrimos todas las cartas
     const picks = pickRandom(img, (dimensions * dimensions) / 2) 
 
     //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
@@ -64,136 +63,92 @@ const generateGame = () => {
     //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
     // para el tablero de juego.
     selectors.tablero.replaceWith(parser.querySelector('.tablero'))
+    })
 
-//     let dimensions2 = gui.dim2.getAttribute('grid-dimension')
 
-//     //-- Nos aseguramos de que el número de dimensiones es par
-//     // y si es impar lanzamos un error
-//     if (dimensions2 % 2 !== 0) {
-//         throw new Error("Las dimensiones del tablero deben ser un número par.")
-//     }
 
-//     //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-//     const img2 = ['logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png']
-
-//     //-- Elegimos un subconjunto de emojis al azar, así cada vez que comienza el juego
-//     // es diferente.
-//     // Es decir, si tenemos un array con 10 emojis, vamos a elegir el cuadrado de las
-//     // dimensiones entre dos, para asegurarnos de que cubrimos todas las cartas
-//     const picks2 = pickRandom(img2, (dimensions2 * dimensions2) / 2) 
-
-//     //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
-//     // están desordenadas.
-//     const items2 = shuffle([...picks2, ...picks2])
+    gui.dim4.addEventListener('click', () => {
     
-//     //-- Vamos a utilizar una función de mapeo para generar 
-//     //  todas las cartas en función de las dimensiones
-//     const cards2 = `
-//         <div class="tablero" style="grid-template-columns: repeat(${dimensions2}, auto)" grid-dimension="2">
-//             ${items2.map(item => `
-//                 <div class="card" item-back="${item}">
-//                     <div class="card-front"></div>
-//                     <div class="card-back"><img src="${item}"></div>
-//                 </div>
-//             `).join('')}
-//        </div>
-//     `
+        const dimensions = 4
+        
+        //-- Nos aseguramos de que el número de dimensiones es par
+        // y si es impar lanzamos un error
+        if (dimensions % 2 !== 0) {
+            throw new Error("Las dimensiones del tablero deben ser un número par.")
+        }
     
-//     //-- Vamos a utilizar un parser para transformar la cadena que hemos generado
-//     // en código html.
-//     const parser2 = new DOMParser().parseFromString(cards2, 'text/html')
-
-//     //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
-//     // para el tablero de juego.
-//     selectors.tablero.replaceWith(parser2.querySelector('.tablero'))
-
-// //---------------------------------------------------------------------------------------------------------
-
-//     let dimensions4 = gui.dim4.getAttribute('grid-dimension')
-
-//     //-- Nos aseguramos de que el número de dimensiones es par
-//     // y si es impar lanzamos un error
-//     if (dimensions4 % 2 !== 0) {
-//         throw new Error("Las dimensiones del tablero deben ser un número par.")
-//     }
-
-//     //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-//     const img4 = ['logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png']
-
-//     //-- Elegimos un subconjunto de emojis al azar, así cada vez que comienza el juego
-//     // es diferente.
-//     // Es decir, si tenemos un array con 10 emojis, vamos a elegir el cuadrado de las
-//     // dimensiones entre dos, para asegurarnos de que cubrimos todas las cartas
-//     const picks4 = pickRandom(img4, (dimensions4 * dimensions4) / 2) 
-
-//     //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
-//     // están desordenadas.
-//     const items4 = shuffle([...picks4, ...picks4])
+        //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
+        const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'noviacadaver.png', 'noviacadaver.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
     
-//     //-- Vamos a utilizar una función de mapeo para generar 
-//     //  todas las cartas en función de las dimensiones
-//     const cards4 = `
-//         <div class="tablero" style="grid-template-columns: repeat(${dimensions4}, auto)" grid-dimension="4">
-//             ${items4.map(item => `
-//                 <div class="card" item-back="${item}">
-//                     <div class="card-front"></div>
-//                     <div class="card-back"><img src="${item}"></div>
-//                 </div>
-//             `).join('')}
-//        </div>
-//     `
+        const picks = pickRandom(img, (dimensions * dimensions) / 2) 
     
-//     //-- Vamos a utilizar un parser para transformar la cadena que hemos generado
-//     // en código html.
-//     const parser4 = new DOMParser().parseFromString(cards4, 'text/html')
+        //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
+        // están desordenadas.
+        const items = shuffle([...picks, ...picks])
+        
+        //-- Vamos a utilizar una función de mapeo para generar 
+        //  todas las cartas en función de las dimensiones
+        const cards = `
+            <div class="tablero" style="grid-template-columns: repeat(${dimensions}, auto)" grid-dimension="4">
+                ${items.map(item => `
+                    <div class="card" item-back="${item}">
+                        <div class="card-front"></div>
+                        <div class="card-back"><img src="${item}"></div>
+                    </div>
+                `).join('')}
+           </div>
+        `
+        
+        //-- Vamos a utilizar un parser para transformar la cadena que hemos generado
+        // en código html.
+        const parser = new DOMParser().parseFromString(cards, 'text/html')
+    
+        //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
+        // para el tablero de juego.
+        selectors.tablero.replaceWith(parser.querySelector('.tablero'))
+        })
+    
 
-//     //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
-//     // para el tablero de juego.
-//     selectors.tablero.replaceWith(parser4.querySelector('.tablero'))
 
-// //-----------------------------------------------------------------------------------------------------------------------
+    gui.dim6.addEventListener('click', () => {
+    
+    const dimensions = 6
+    
+    //-- Nos aseguramos de que el número de dimensiones es par
+    // y si es impar lanzamos un error
+    if (dimensions % 2 !== 0) {
+        throw new Error("Las dimensiones del tablero deben ser un número par.")
+    }
 
-//     let dimensions6 = gui.dim6.getAttribute('grid-dimension')
+    //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
+    const img = ['jack.png', 'jack.png', 'sally.png', 'sally.png', 'frankieweene.png', 'frankieweene.png', 'noviacadaver.png', 'noviacadaver.png', 'oogieboogie.png', 'oogieboogie.png', 'willywonka.png', 'willywonka.png']
+    const picks = pickRandom(img, (dimensions * dimensions) / 2) 
 
-//     //-- Nos aseguramos de que el número de dimensiones es par
-//     // y si es impar lanzamos un error
-//     if (dimensions6 % 2 !== 0) {
-//         throw new Error("Las dimensiones del tablero deben ser un número par.")
-//     }
+    //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
+    // están desordenadas.
+    const items = shuffle([...picks, ...picks])
+    
+    //-- Vamos a utilizar una función de mapeo para generar 
+    //  todas las cartas en función de las dimensiones
+    const cards = `
+        <div class="tablero" style="grid-template-columns: repeat(${dimensions}, auto)" grid-dimension="4">
+            ${items.map(item => `
+                <div class="card" item-back="${item}">
+                    <div class="card-front"></div>
+                    <div class="card-back"><img src="${item}"></div>
+                </div>
+            `).join('')}
+       </div>
+    `
+    
+    //-- Vamos a utilizar un parser para transformar la cadena que hemos generado
+    // en código html.
+    const parser = new DOMParser().parseFromString(cards, 'text/html')
 
-//     //-- Creamos un array con los emojis que vamos a utilizar en nuestro juego
-//     const img6 = ['logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png', 'logo-urjc.png']
-
-//     //-- Elegimos un subconjunto de emojis al azar, así cada vez que comienza el juego
-//     // es diferente.
-//     // Es decir, si tenemos un array con 10 emojis, vamos a elegir el cuadrado de las
-//     // dimensiones entre dos, para asegurarnos de que cubrimos todas las cartas
-//     const picks6 = pickRandom(img6, (dimensions6 * dimensions6) / 2) 
-
-//     //-- Después descolocamos las posiciones para asegurarnos de que las parejas de cartas
-//     // están desordenadas.
-//     const items6= shuffle([...picks6, ...picks6])
-
-//     //-- Vamos a utilizar una función de mapeo para generar 
-//     //  todas las cartas en función de las dimensiones
-//     const cards6 = `
-//         <div class="tablero" style="grid-template-columns: repeat(${dimensions6}, auto)" grid-dimension="6">
-//             ${items6.map(item => `
-//                 <div class="card" item-back="${item}">
-//                     <div class="card-front"></div>
-//                     <div class="card-back"><img src="${item}"></div>
-//                 </div>
-//             `).join('')}
-//     </div>
-//     `
-
-//     //-- Vamos a utilizar un parser para transformar la cadena que hemos generado
-//     // en código html.
-//     const parser6 = new DOMParser().parseFromString(cards6, 'text/html')
-
-//     //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
-//     // para el tablero de juego.
-//     selectors.tablero.replaceWith(parser6.querySelector('.tablero'))    
+    //-- Por último, vamos a inyectar el código html que hemos generado dentro de el contenedor
+    // para el tablero de juego.
+    selectors.tablero.replaceWith(parser.querySelector('.tablero'))
+    })
 }
 
 
