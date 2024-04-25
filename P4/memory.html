@@ -12,14 +12,35 @@
     <body>
         <div class="game">
             <div class="controles">
-                <button>Comenzar</button>
+                <button class="comienzo">Comenzar</button>
+                <button class="reinicio">Reiniciar</button>
+            </div>
+            <div class="controles">
                 <div class="display">
                     <div class="movimientos">0 movimientos</div>
                     <div class="timer">tiempo: 0 sec</div>
+                    <div class="dimensiones">
+                        <button class="btn2" grid-dimension="2">2</button>
+                        <button class="btn4" grid-dimension="4">4</button>
+                        <button class="btn6" grid-dimension="6">6</button>
+                    </div>
                 </div>
             </div>
             <div class="grid-container">
-                <div class="tablero" grid-dimension="4"></div>
+                <div class="tablero" grid-dimension="4">  <!-- grid-dimension="4" -->
+                    <div class="card" item-back="logo-urjc.png">
+                        <div class="card-front"></div>
+                    <div class="card-back"><img src="logo-urjc.png"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-front"></div>
+                    <div class="card-back"><img src="logo-urjc.png"></div>
+                    </div>
+                    <div class="card">
+                        <div class="card-front"></div>
+                    <div class="card-back"><img src="logo-urjc.png"></div>
+                    </div>
+                </div>
                 <div class="win">¡Has Ganado!</div>
             </div>
         </div>
