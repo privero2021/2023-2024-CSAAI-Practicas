@@ -25,3 +25,11 @@ button {
     font-family: Fredoka;
     font-size: 18pt;
 }
+
+.display {
+    padding: 5px;
+}
+
+/* .nNodos, .tTime, .message {
+    padding: 5px;
+} */

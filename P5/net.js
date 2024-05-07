@@ -18,6 +18,13 @@ const pipeRandomWeight = 100; // No hay retardo entre nodos 100
 const btnCNet = document.getElementById("btnCNet");
 const btnMinPath = document.getElementById("btnMinPath");
 
+const nNodos = document.getElementById("nNodos");
+const tTime = document.getElementById("tTime");
+const message = document.getElementById("message");
+
+// Variable para mantener el estado de si la red ha sido generada
+let redGenerada = false;
+
 // Clase para representar un nodo en el grafo
 class Nodo {
 
@@ -262,6 +269,8 @@ function drawNet(nnodes) {
     });
 }
 
+// Calcular el tiempo total (delay de cada nodo)
+
 // Función de callback para generar la red de manera aleatoria
 btnCNet.onclick = () => {
 
@@ -274,11 +283,27 @@ btnCNet.onclick = () => {
   
     // Dibujar la red que hemos generado
     drawNet(redAleatoria);
-  
+
+    // Actualizar el número de nodos generados y restablecer tiempo total a 0 en el display
+    nNodos.innerText = `${numNodos} nodos`;
+    tTime.innerText = "Tiempo total: 0 sec";
+
+    // Mensaje de red generada
+    message.innerText = "Red generada";
+
+    // Actualizar el estado de la red generada
+    redGenerada = true;
 }
 
 // Función de callback para generar la ruta mínima
 btnMinPath.onclick = () => {
+
+    // Mensaje de error si se quiere calcular la ruta mínima antes de generar la red
+    // Verificar si la red ha sido generada
+    if (!redGenerada) {
+      // Mostrar mensaje de error si la red no está generada
+      message.innerText = "Error! La red no está generada. Por favor generar primero la red."
+    }
 
     // Supongamos que tienes una red de nodos llamada redAleatoria y tienes nodos origen y destino
     nodoOrigen = redAleatoria[0]; // Nodo de origen
@@ -287,5 +312,22 @@ btnMinPath.onclick = () => {
     // Calcular la ruta mínima entre el nodo origen y el nodo destino utilizando Dijkstra con retrasos
     rutaMinimaConRetardos = dijkstraConRetardos(redAleatoria, nodoOrigen, nodoDestino);
     console.log("Ruta mínima con retrasos:", rutaMinimaConRetardos);
-  
+
+    // Cambiar de color los nodos con la ruta mínima
+    // rutaMinimaConRetardos.forEach(nodo => {
+    //   ctx.beginPath();
+    //   ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+    //   ctx.fillStyle = "green";
+    //   ctx.fill();
+    //   ctx.strokeStyle = "white";
+    //   ctx.lineWidth = 2;
+    //   ctx.stroke();
+    // });
+
+    // // Volver a dibujar la red con los nodos actualizados en verde
+    // drawNet(redAleatoria);
+    
+    // Actualizar tiempo total correspondiente
+    
+
   }
