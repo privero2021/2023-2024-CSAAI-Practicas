@@ -22,6 +22,8 @@ const nNodos = document.getElementById("nNodos");
 const tTime = document.getElementById("tTime");
 const message = document.getElementById("message");
 
+const dino = document.getElementById("dino");
+
 // Variable para mantener el estado de si la red ha sido generada
 let redGenerada = false;
 
@@ -174,7 +176,6 @@ function crearRedAleatoriaConCongestion(numNodos, numConexiones) {
     }
   
     // Conectamos los nodos
-
     // Seleccionamos los nodos más cercanos teniendo en cuenta la distancia
     // Seleccionamos tantos nodos como indica la variable numConexiones
     // El nodo será candidato siempre que no estén ya conectados
@@ -255,40 +256,21 @@ function drawNet(nnodes, rutaMinima) {
     nnodes.forEach(nodo => {
       // Si el nodo está en la ruta mínima, colorearlo de verde
       if (rutaMinima && rutaMinima.find(n => n.id === nodo.id)) {
-        ctx.beginPath();
-        ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
-        ctx.fillStyle = "green";
-        ctx.fill();
+          ctx.beginPath();
+          ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+          ctx.fillStyle = "green";
+          ctx.fill();
       } else {
-        ctx.beginPath();
-        ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
-        ctx.fillStyle = 'blue';
-        ctx.fill();
+          ctx.beginPath();
+          ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+          ctx.fillStyle = 'blue';
+          ctx.fill();
       }
 
       // Dibujar borde blanco alrededor del nodo
       ctx.strokeStyle = "white";
       ctx.lineWidth = 2;
       ctx.stroke();
-      
-      // ctx.beginPath();
-      // ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
-      // ctx.fillStyle = 'blue';
-      // ctx.fill();
-      // ctx.strokeStyle = "white";
-      // ctx.lineWidth = 2;
-      // ctx.stroke();
-
-      // if (rutaMinimaConRetardos)
-      // rutaMinimaConRetardos.forEach(nodo => {
-      //     ctx.beginPath();
-      //     ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
-      //     ctx.fillStyle = "green";
-      //     ctx.fill();
-      //     ctx.strokeStyle = "white";
-      //     ctx.lineWidth = 2;
-      //     ctx.stroke();
-      //   });
 
       ctx.font = '12px Arial';
       ctx.fillStyle = 'white';
@@ -299,6 +281,17 @@ function drawNet(nnodes, rutaMinima) {
 }
 
 // Calcular el tiempo total (delay de cada nodo)
+function tiempoTotal(rutaMinima) {
+  
+  let tTotal = 0;
+
+  rutaMinima.forEach(nodo => {
+    tTotal += nodo.delay; // Sumar el retardo de cada nodo en la ruta mínima
+  })
+
+  // Mostrar el tiempo total en el elemento HTML correspondiente
+  tTime.innerText = "Tiempo total: " + Math.floor(tTotal) + " sec";
+}
 
 // Función de callback para generar la red de manera aleatoria
 btnCNet.onclick = () => {
@@ -322,6 +315,10 @@ btnCNet.onclick = () => {
 
     // Actualizar el estado de la red generada
     redGenerada = true;
+
+    // Borrar gif al generar la red
+    dino.classList.add('hide');
+
 }
 
 // Función de callback para generar la ruta mínima
@@ -345,7 +342,22 @@ btnMinPath.onclick = () => {
     // Volver a dibujar la red con los nodos actualizados en verde
     drawNet(redAleatoria, rutaMinimaConRetardos);
     
-    // Actualizar tiempo total correspondiente
-    
+    // Calcular el tiempo total de delay en la ruta mínima
+    tiempoTotal(rutaMinimaConRetardos);
+
+    // Mostrar gif al calcular la ruta
+    dino.classList.remove('hide');
 
   }
+
+// Ajusta el tamaño del canvas al tamaño de la ventana
+function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight * 0.8; // Ajusta la altura del canvas al 80% de la altura de la ventana
+}
+
+// Llama a la función de ajuste del canvas cuando la ventana cambia de tamaño
+window.addEventListener('resize', resizeCanvas);
+
+// Llama a la función resizeCanvas() cuando la página se carga inicialmente
+window.addEventListener('load', resizeCanvas);
