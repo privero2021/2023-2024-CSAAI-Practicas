@@ -227,7 +227,7 @@ function generarRetardo() {
 }
 
 // Dibujar la red en el canvas
-function drawNet(nnodes) {
+function drawNet(nnodes, rutaMinima) {
     // Dibujamos las conexiones entre nodos
     nnodes.forEach(nodo => {
       nodo.conexiones.forEach(({ nodo: conexion, peso }) => {
@@ -253,13 +253,42 @@ function drawNet(nnodes) {
     
     // Dibujamos los nodos
     nnodes.forEach(nodo => {
-      ctx.beginPath();
-      ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
-      ctx.fillStyle = 'blue';
-      ctx.fill();
+      // Si el nodo está en la ruta mínima, colorearlo de verde
+      if (rutaMinima && rutaMinima.find(n => n.id === nodo.id)) {
+        ctx.beginPath();
+        ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+        ctx.fillStyle = "green";
+        ctx.fill();
+      } else {
+        ctx.beginPath();
+        ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+        ctx.fillStyle = 'blue';
+        ctx.fill();
+      }
+
+      // Dibujar borde blanco alrededor del nodo
       ctx.strokeStyle = "white";
       ctx.lineWidth = 2;
       ctx.stroke();
+      
+      // ctx.beginPath();
+      // ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+      // ctx.fillStyle = 'blue';
+      // ctx.fill();
+      // ctx.strokeStyle = "white";
+      // ctx.lineWidth = 2;
+      // ctx.stroke();
+
+      // if (rutaMinimaConRetardos)
+      // rutaMinimaConRetardos.forEach(nodo => {
+      //     ctx.beginPath();
+      //     ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
+      //     ctx.fillStyle = "green";
+      //     ctx.fill();
+      //     ctx.strokeStyle = "white";
+      //     ctx.lineWidth = 2;
+      //     ctx.stroke();
+      //   });
 
       ctx.font = '12px Arial';
       ctx.fillStyle = 'white';
@@ -313,19 +342,8 @@ btnMinPath.onclick = () => {
     rutaMinimaConRetardos = dijkstraConRetardos(redAleatoria, nodoOrigen, nodoDestino);
     console.log("Ruta mínima con retrasos:", rutaMinimaConRetardos);
 
-    // Cambiar de color los nodos con la ruta mínima
-    // rutaMinimaConRetardos.forEach(nodo => {
-    //   ctx.beginPath();
-    //   ctx.arc(nodo.x, nodo.y, nodeRadius, 0, 2 * Math.PI);
-    //   ctx.fillStyle = "green";
-    //   ctx.fill();
-    //   ctx.strokeStyle = "white";
-    //   ctx.lineWidth = 2;
-    //   ctx.stroke();
-    // });
-
-    // // Volver a dibujar la red con los nodos actualizados en verde
-    // drawNet(redAleatoria);
+    // Volver a dibujar la red con los nodos actualizados en verde
+    drawNet(redAleatoria, rutaMinimaConRetardos);
     
     // Actualizar tiempo total correspondiente
     
