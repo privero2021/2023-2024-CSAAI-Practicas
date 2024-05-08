@@ -361,3 +361,4 @@ window.addEventListener('resize', resizeCanvas);
 
 // Llama a la función resizeCanvas() cuando la página se carga inicialmente
 window.addEventListener('load', resizeCanvas);
+
